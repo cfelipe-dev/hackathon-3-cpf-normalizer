@@ -1,0 +1,6 @@
+github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
+github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
+github.com/klassmann/cpfcnpj v0.0.0-20200907140233-a595c5fd8de1 h1:nT1t/3YnkjBWdVl6zmvmim6S8gjAZOpZi19iEBq3/Ko=
+github.com/klassmann/cpfcnpj v0.0.0-20200907140233-a595c5fd8de1/go.mod h1:2lGFirXS+qsYDFtk4OAzWXyILL3mrSAluEH26Ao65ZY=
+github.com/sashabaranov/go-openai v1.26.2 h1:cVlQa3gn3eYqNXRW03pPlpy6zLG52EU4g0FrWXc0EFI=
+github.com/sashabaranov/go-openai v1.26.2/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
