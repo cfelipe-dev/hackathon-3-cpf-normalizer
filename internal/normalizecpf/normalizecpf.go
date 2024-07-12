@@ -11,7 +11,7 @@ import (
 	openaisdk "github.com/sashabaranov/go-openai"
 )
 
-func SendRequest(CPF string) ([]string, error) {
+func SendRequest(CPF string, formatCPF bool) ([]string, error) {
 	err := godotenv.Load()
 
 	if err != nil {
@@ -33,7 +33,7 @@ func SendRequest(CPF string) ([]string, error) {
 			Messages: []openaisdk.ChatCompletionMessage{
 				{
 					Role:    "system",
-					Content: "Você é um assistente especializado em identificação e validação de CPFs. Dado um texto, identifique todos os possíveis CPFs, em diferentes formatos, valide se são corretos e formate-os no padrão XXX.XXX.XXX-XX, retornando apenas o(s) CPF(s) formatado(s).",
+					Content: "Você é um assistente especializado em identificação e validação de CPFs. Dado um texto, identifique todos os possíveis CPFs, que pode ser nos seguintes formatos: apenas números, com pontos entre os números, com pontos e traços e com espaços. Valide se são corretos e formate-os no padrão XXXXXXXXXXX, retornando apenas o(s) CPF(s) formatado(s).",
 				},
 				{
 					Role:    "user",
@@ -56,7 +56,11 @@ func SendRequest(CPF string) ([]string, error) {
 		cpf := cpfcnpj.NewCPF(cpftext)
 
 		if cpf.IsValid() {
-			validCPFs = append(validCPFs, cpf.String())
+			if formatCPF {
+				validCPFs = append(validCPFs, cpf.String())
+			} else {
+				validCPFs = append(validCPFs, cpftext)
+			}
 		}
 	}
 

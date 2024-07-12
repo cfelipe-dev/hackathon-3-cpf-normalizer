@@ -67,7 +67,7 @@ fragment EndUserFragment on User {
   notes
 }`
 
-func SearchEndUser(inputPhone string) ([]FormattedCPF, error) {
+func SearchEndUser(inputPhone string, formatCPF bool) ([]FormattedCPF, error) {
 	err := godotenv.Load()
 
 	if err != nil {
@@ -144,7 +144,7 @@ func SearchEndUser(inputPhone string) ([]FormattedCPF, error) {
 	var normalizedTexts []FormattedCPF
 
 	for _, note := range notes {
-		normalizedCPFs, err := normalizecpf.SendRequest(note)
+		normalizedCPFs, err := normalizecpf.SendRequest(note, formatCPF)
 		if err != nil {
 			return nil, fmt.Errorf("failed to normalize CPF: %w", err)
 		}
